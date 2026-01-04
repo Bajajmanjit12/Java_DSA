@@ -1,0 +1,11 @@
+//find number opposite to dice
+import java.util.*;
+class Main{
+    public static void main(String ar[]){
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter:");
+        int num = sc.nextInt();
+        
+        System.out.println("The number opposite in dice is :" + (7 - num));
+    }
+}
