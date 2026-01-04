@@ -1,0 +1,78 @@
+//reverse the number
+import java.util.*;
+
+class Main {
+    
+    static int revnum(int num){
+        
+        StringBuffer s = new StringBuffer(String.valueOf(num));
+        s.reverse();
+        num = Integer.parseInt(String.valueOf(s));
+        
+        return num;
+        
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number:");
+        int num = sc.nextInt();
+       
+        System.out.println("The reverse of " + num + " is " + revnum(num));
+    }
+}
+
+//using recursion
+
+import java.util.*;
+
+class Main {
+    
+    static void revnum(int n,int[] rev,int[] bp){
+        
+        if(n > 0)
+        {
+             revnum(n/10,rev,bp);
+             rev[0] += (n%10)*bp[0];
+             bp[0] *= 10;
+        }
+     
+        
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number:");
+        int num = sc.nextInt();
+       int rev[] ={0};
+       int bp[] ={1};
+       revnum(num,rev,bp);
+        System.out.println("The reverse of " + num + " is " + rev[0]);
+    }
+}
+
+//using loop
+
+import java.util.*;
+
+class Main {
+    
+    static int revnum(int n){
+        int sum =0;
+        while (n > 0)
+        {
+            int rem = n % 10;
+            sum = (sum*10) + rem;
+            n=n/10;
+        }
+     return sum;
+        
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number:");
+        int num = sc.nextInt();
+        System.out.println("The reverse of " + num + " is " +   revnum(num));
+    }
+}
