@@ -1,0 +1,69 @@
+//Find the closest number to n and divisible by m
+import java.util.*;
+
+class Main {
+    
+    static int closestNumber(int n,int m){
+        int closest =0;
+        int min=Integer.MAX_VALUE;
+        
+        for(int i = n -Math.abs(m) ; i <= n + Math.abs(m);i++)
+        {
+            int diff;
+            if(i%m==0){
+                diff = Math.abs(n-i);
+            
+            
+            if(diff < min || (diff ==  min && Math.abs(i) >Math.abs(closest)))
+            {
+                closest = i;
+                min = diff;
+            }
+        }
+    }
+        
+        return closest;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the target number:");
+        int n = sc.nextInt();
+        System.out.println("Enter the number it should be divisible with:");
+        int m = sc.nextInt();
+        int res = closestNumber(n,m);
+        System.out.println("The closest nuumber is : " + res);
+    }
+}
+
+//second approach - find quotient
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+
+class Main {
+    
+    static int closestNumber(int n,int m){
+        int quotient = n/m;
+        
+        int n1 = m * quotient;
+        
+        int n2 = (n * m)> 0 ? (m*(quotient +1)) : (m * (quotient - 1));
+        
+        if( Math.abs(n - n1) < Math.abs(n - n2)){
+            return n1;
+        }
+        
+        return n2;
+    }
+        
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the target number:");
+        int n = sc.nextInt();
+        System.out.println("Enter the number it should be divisible with:");
+        int m = sc.nextInt();
+        int res = closestNumber(n,m);
+        System.out.println("The closest nuumber is : " + res);
+    }
+}
