@@ -1,0 +1,60 @@
+//check whether two rectangle overlap or not
+import java.util.*;
+
+class Main {
+    
+    static class Point{
+        int x,y;
+        
+        Point(int x,int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    
+    static boolean rec(Point l1,Point r1,Point l2,Point r2)
+    {
+        if(l1.x > r2.x || l2.x > r1.x)
+        {
+            return false;
+        }
+        
+        if(r1.y > l2.y ||r2.y > l1.y)
+        {
+            return false;
+        }
+       return true; 
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the first rectangle left coordinates");
+        int x1 = sc.nextInt();
+        int y1 = sc.nextInt();
+    
+        System.out.println("Enter the first rectangle right coordinates");
+        int x2 = sc.nextInt();
+        int y2 = sc.nextInt();
+        
+        System.out.println("Enter the sec rectangle left coordinates");
+        int x3 = sc.nextInt();
+        int y3 = sc.nextInt();
+        
+        System.out.println("Enter the sec rectangle right coordinates");
+        int x4 = sc.nextInt();
+        int y4 = sc.nextInt();
+        
+        Point l1 = new Point(x1,y1);
+        Point r1 = new Point(x2,y2);
+        Point l2 = new Point(x3,y3);
+        Point r2 = new Point(x4,y4);
+        if(rec(l1,r1,l2,r2))
+        {
+            System.out.println("rectangle overlap!");
+        }
+        else
+        {
+            System.out.println("rectangle does not overlap!");
+        }
+    }
+}
