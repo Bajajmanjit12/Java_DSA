@@ -91,3 +91,43 @@ class Main {
         
     }
 }
+
+//memoization approach
+import java.util.*;
+
+class Main {
+    
+    static int nthFibonacciSum(int memo[] , int n)
+    {
+        //base case
+        if (n <= 1)
+        {
+            return n;
+        }
+        
+        // check is alredy calculated
+        if(memo[n] != -1)
+        {
+            return memo[n];
+        }
+        
+        memo[n] = nthFibonacciSum(memo , n-1) + nthFibonacciSum(memo , n-2);
+        
+        return memo[n];
+    }
+    
+    static int nthFibonacci(int n)
+    {
+        int[] memo = new int[n+1];
+        Arrays.fill(memo , -1);   // to check is they are calculated or not
+        
+        return nthFibonacciSum(memo , n);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number : ");
+        int num = sc.nextInt();
+        int result = nthFibonacci(num);
+        System.out.println("Fibonacci Series sum : " + result);
+    }
+}
