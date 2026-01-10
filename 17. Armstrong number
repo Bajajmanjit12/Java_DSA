@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Main {
+    
+    public static int power(int x, int y)
+    {
+        if (y==0){
+            return 1;
+        }
+        if(y==1)
+        {
+            return x;
+        }
+        
+        if(y % 2==0)
+        {
+            return power(x , y/2) * power( x , y/2);
+        }
+         return x * power(x , y/2) * power( x , y/2);
+    }
+    static int order(int n ){
+        int count = 0;
+        while(n != 0)
+        {
+            count++;
+            n /= 10;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number : ");
+        int num = sc.nextInt();
+        int order = order(num);
+        int temp = num , sum = 0;
+        
+        
+        while(temp != 0){
+            int rem = temp % 10;
+            sum += power(rem , order);
+            temp /= 10;
+        }
+        
+        if(sum == num)
+        {
+            System.out.println("Armstrong number");
+        }
+        else{
+             System.out.println("Not an Armstrong number");
+        }
+    }
+}
