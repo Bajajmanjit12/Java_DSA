@@ -51,3 +51,35 @@ class Main {
         }
     }
 }
+
+//second appraoch convert to string
+import java.util.*;
+
+class Main {
+    
+    public static void isArmstrong(int n){
+        String num = Integer.toString(n);
+        int len = num.length();
+        int output = 0;
+        
+        for(char c : num.toCharArray())
+        {
+            output += (int) Math.pow(c - '0' , len);
+        }
+        
+        if (output == Integer.parseInt(num))
+        {
+            System.out.println("Armstrong number");
+        }
+        else{
+             System.out.println("Not an Armstrong number");
+        }
+        
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number : ");
+        int num = sc.nextInt();
+        isArmstrong(num);
+    }
+}
