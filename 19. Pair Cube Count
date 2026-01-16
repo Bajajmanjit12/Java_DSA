@@ -1,0 +1,63 @@
+//first approach
+import java.util.Scanner;
+
+class Main {
+    
+    
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the num :");
+        int n = sc.nextInt();
+        int count  = 0;
+        for(int i = 1 ;i <= n ;i++)
+        {
+            for(int j =0 ;j <= n ;j++)
+            {
+                if((i*i*i  + j*j*j) == n )
+                {
+                    count++;
+                }
+            }
+        }
+        
+        System.out.println(count);
+    }
+}
+
+//second apprach - expected
+import java.util.Scanner;
+
+class Main {
+    static int countPairs(int n)
+    {
+        int count = 0;
+        
+        for(int i = 1; i<= Math.cbrt(n);i++)
+        {
+            int cb = i * i * i;
+            
+            int diff = n - cb;
+            
+            int cbrtdiff = (int) Math.cbrt(diff);
+            
+            if(cbrtdiff * cbrtdiff * cbrtdiff == diff)
+            {
+                count ++;
+            }
+        }
+        
+        return count;
+    }
+    
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the num :");
+        int n = sc.nextInt();
+        
+        int result = countPairs(n);
+        
+        System.out.println(result);
+    }
+}
